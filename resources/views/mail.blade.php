@@ -189,7 +189,7 @@
                   <td class="content-cell">
                     <h1>Verify your email address</h1>
                     <p>
-                      Almost done, <b>@<?= $username; ?></b>! To complete your Chitchat sign up, we just need to verify your email address:<br> <a href="mailto: <?= $mail; ?>"><?= $mail; ?></a><br>
+                      Almost done, <b>{{ $name }}</b>! To complete your Chitchat sign up, we just need to verify your email address:<br> <a href="mailto:{{ $email }}">{{ $email }}</a><br>
                       Thanks for signing up for ChitChat! We're excited to have you as an early user.
                     </p>
                     <!-- Action -->
@@ -197,7 +197,7 @@
                       <tr>
                         <td align="center">
                           <div>
-                            <a href="<?= $links; ?>" class="button button-blue">Verify email address</a>
+                            <a href="#" class="button button-blue">Verify email address</a>
                           </div>
                         </td>
                       </tr>
@@ -210,7 +210,7 @@
                         <td>
                           <p class="sub">Button not working? Paste the following link into your browser:
                           </p>
-                          <p class="sub"><a href="<?= $links ?>"><?= $links; ?></a></p>
+                          <p class="sub"><a href="{{ $link }}">{{ $link }}</a></p>
                         </td>
                       </tr>
                     </table>

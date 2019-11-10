@@ -18,4 +18,9 @@ Route::get('/', function () {
 // Register 
 Route::get('/auth/register', 'RegisterController@create')->name('register'); // Create views
 Route::post('/auth', 'RegisterController@store')->name('regist'); // Store data
+// Email from register
+Route::get('confirmation/{token}/{name}&{email}', 'MailController@sendEmail')->name('sentEmail');
+
+// Auth login
+Route::get('/auth/login', 'LoginController@index')->name('login');
 

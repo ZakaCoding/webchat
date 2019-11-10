@@ -11,7 +11,7 @@ class MailController extends Controller
     {
         try
         {
-            Mail::send('email', ['name' => $request->nama, 'message' => $request->message], function ($message) use ($request)
+            Mail::send('email', ['name' => $request->nama], function ($message) use ($request)
             {
                 $message->subject($request->judul);
                 $message->from('donotreply@mail.com', 'Devs');
