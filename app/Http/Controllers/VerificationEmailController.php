@@ -15,7 +15,7 @@ class VerificationEmailController extends Controller
         {
             if(DB::table('users')->where('remember_token','=', $token)->exists())
             {
-                
+                // Update
             }
         }
         else{
