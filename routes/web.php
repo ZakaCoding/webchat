@@ -23,14 +23,12 @@ Route::get('/confirmation/{token}/{name}&{email}', 'VerificationEmailController@
 Route::get('/confirmation/success/{token}/{name}&{email}','VerificationEmailController@show')->name('confirm');
 Route::get('/confirmation/fail/{token}/{name}&{email}','VerificationEmailController@show')->name('confirmFail');
 
-Route::get('/home', function() {
-    return "Home";
-});
 
 // Auth login
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/c/{user}', 'ChatController@show')->name('chatList');
 // Route::get('/auth/login', 'LoginController@show')->name('login');
 // Route::post('/auth/login', 'LoginController@auth')->name('auth');
 

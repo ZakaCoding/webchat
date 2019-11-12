@@ -55,6 +55,9 @@ body {
     max-width: 400px;
     margin:auto;
 }
+.w-full {
+    max-width: 100vh;
+}
 .wrapper .content {
     width: 400px;
     margin:auto;
@@ -69,6 +72,60 @@ body {
     width: 100%;
     display: block;
     margin-bottom: 10px;
+}
+
+/* Custom chat message */
+.chat-text {
+    min-width: 100px;
+    /* border: 1px solid #7e7e77; */
+    display: block;
+}
+.chat {
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+.chat-text p {
+    margin: 0px;
+    padding:0px;
+}
+.chat-left {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F1F0F0;
+}
+.chat-right {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #40c979;
+    color: white !important;
+}
+.form-message {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+.chat-message {
+    width: 100%;
+    position: relative;
+    border-radius: 30px;
+    border: 2px solid whitesmoke;
+    padding: 10px;
+    padding-right: 60px;
+}
+.btn-sent {
+    border: none;
+    border-radius: 50%;
+    padding: 3px;
+    width: 40px;
+    height: 40px;
+    background-color: #14b457;
+    color:white;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    display: block;
+    box-sizing: border-box;
 }
 
 footer {

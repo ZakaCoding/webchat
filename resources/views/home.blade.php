@@ -7,7 +7,7 @@
             <div class="">
                 <div class="clearfix">
                     <div class="float-left">
-                        <h4> <b>Chat list</b> </h4>
+                        <h4 class="align-middle"> <b>Chat list</b> </h4>
                     </div>
                     <div class="float-right">
                         <button class='btn btn-success'>New</button>
@@ -17,7 +17,7 @@
             <div class="py-2"></div>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    John Doe
+                    <a href="{{ url('home/c/John Doe') }}">John Doe</a>
                     <span class="badge badge-primary badge-pill">14</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -31,14 +31,59 @@
             </ul>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 py-4">
-            <div class="card">
-                <h5 class="card-header">Chatting</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">New Chat</a>
+            @if(isset($user))
+                <div class="card">
+                    <h5 class="card-header">{{ isset($user) ? $user : 'Chatting' }}</h5>
+                    <div class="card-body">
+                        <div class="chat">
+                            <div class="clearfix">
+                                <div class="chat-text chat-left float-left">
+                                    <p>Hi, This example chat by john doe</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="chat-text chat-right float-right">
+                                    <p>Hi, John whats up!</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="chat-text chat-left float-left">
+                                    <p>Today i will visit your house</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <form action="" method="post" class="form-message">
+                            <input type="text" name="message" class="chat-message" placeholder="Type your message...">
+                            <button type="submit" class="btn-sent"><i class="fas fa-location-arrow text-center"></i></button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="card">
+                    <h5 class="card-header">{{ isset($user) ? $user : 'Chatting' }}</h5>
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="chat-text chat-left float-left">
+                                <p>Hi, This example chat by john doe</p>
+                            </div><br>
+                            <div class="chat-text chat-right float-right">
+                                <p>Hi, John whats up!</p>
+                            </div>
+                            <br>
+                            <div class="chat py-4">
+                                <form action="" method="post">
+                                    <input type="text" name="Message" placeholder="Enter you'r Message">
+                                </form>
+                            </div>
+                        </div>
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">New Chat</a>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="col-sm-6 col-md-3 hidden-xs py-4">
             <div class="alert alert-success" role="alert">
