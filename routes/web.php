@@ -19,8 +19,19 @@ Route::get('/', function () {
 Route::get('/auth/register', 'RegisterController@create')->name('register'); // Create views
 Route::post('/auth', 'RegisterController@store')->name('regist'); // Store data
 // Email from register
-Route::get('confirmation/{token}/{name}&{email}', 'VerificationEmailController@VerifiesEmail')->name('Verifies');
+Route::get('/confirmation/{token}/{name}&{email}', 'VerificationEmailController@VerifiesEmail')->name('Verifies');
+Route::get('/confirmation/success/{token}/{name}&{email}','VerificationEmailController@show')->name('confirm');
+Route::get('/confirmation/fail/{token}/{name}&{email}','VerificationEmailController@show')->name('confirmFail');
+
+Route::get('/home', function() {
+    return "Home";
+});
 
 // Auth login
-Route::get('/auth/login', 'LoginController@index')->name('login');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/auth/login', 'LoginController@show')->name('login');
+// Route::post('/auth/login', 'LoginController@auth')->name('auth');
+
 

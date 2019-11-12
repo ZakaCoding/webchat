@@ -44,7 +44,7 @@
                 }
             ?>
             <label for="pwdInput">Password</label>
-            <input type="password" id="pwdInput" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[0-9]).{0,}" aria-describedby="passwordlHelp" placeholder="Password">
+            <input type="password" name="password" id="pwdInput" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[0-9]).{0,}" aria-describedby="passwordlHelp" placeholder="Password">
             <small id="passwordlHelp" class="form-text text-muted">
               Make sure it's <span id="min-length">at least 8 characters</span>
               <span id="validate-number"> including a number</span> and a <span id="lowcase">lowercase letter.</span>
@@ -52,14 +52,10 @@
             <div class="invalid-feedback">{{ $message }}</div>
         </div>
         <button type="submit" class="btn btn-success btn-block">Sign me up!</button>
-        <div class="clearfix">
-            <label class="float-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="#" class="float-right">Forgot Password?</a>
-        </div>
         
         {{ csrf_field() }}
     </form>
-    <!-- <p class="text-center"><a href="#">Create an Account</a></p> -->
+    <p class="text-center"><a href="{{ route('login') }}">Create an Account</a></p>
 
     <!-- Return response create account -->
     @if(\Session::has('success'))
