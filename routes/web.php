@@ -28,8 +28,9 @@ Route::get('/confirmation/fail/{token}/{name}&{email}','VerificationEmailControl
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/c/{user}', 'ChatController@show')->name('chatList');
-// Route::get('/auth/login', 'LoginController@show')->name('login');
-// Route::post('/auth/login', 'LoginController@auth')->name('auth');
+Route::get('/home/c/{user}', 'ChatController@index')->name('chatList');
+// Route::get('/', 'ChatController@index');
+Route::get('messages', 'ChatController@fetchMessages');
+Route::post('messages', 'ChatController@sendMessage');
 
 

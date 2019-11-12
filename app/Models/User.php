@@ -46,8 +46,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($password)
+    /**
+     * A user can have many messages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
     {
-        $this->attributes['password'] = \Hash::make($password);
+        return $this->hasMany(Message::class);
     }
+
+    // public function setPasswordAttribute($password)
+    // {
+    //     $this->attributes['password'] = \Hash::make($password);
+    // }
 }
