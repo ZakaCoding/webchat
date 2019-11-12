@@ -1,4 +1,4 @@
-html, body {
+body {
     background-color: whitesmoke;
 }
 
@@ -27,6 +27,19 @@ html, body {
 }
 
 /* Confirmation page */
+.text-white {
+    color:#ffffff !important;
+}
+.bg-white {
+    background-color: white !important;
+}
+.bg-transparent {
+    background-color: transparent !important;
+}
+.bg-smoke {
+    background-color: whitesmoke !important;
+}
+
 .wrapper {
     width: 100%;
     padding:0px;
@@ -34,7 +47,7 @@ html, body {
     display: block;  
 }
 .wrapper-head {
-    padding: 40px 0px 40px 0px;
+    padding: 0px 0px 40px 0px;
     background-color: #0161CD;
     color: white;
 }
