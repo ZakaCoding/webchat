@@ -33,10 +33,10 @@
         <div class="col-xs-12 col-sm-6 col-md-6 py-4">
             @if(isset($user))
                 <div class="card">
-                    <h5 class="card-header">{{ isset($user) ? $user : 'Chatting' }}</h5>
+                    <h5 class="card-header">{{ $user }}</h5>
                     <div class="card-body">
                         <div class="chat">
-                            <div class="clearfix">
+                            <!-- <div class="clearfix">
                                 <div class="chat-text chat-left float-left">
                                     <p>Hi, This example chat by john doe</p>
                                 </div>
@@ -50,34 +50,25 @@
                                 <div class="chat-text chat-left float-left">
                                     <p>Today i will visit your house</p>
                                 </div>
-                            </div>
+                            </div> -->
+                            <chat-messages :messages="messages"></chat-messages>
                         </div>
                     </div>
                     <div class="card-footer bg-white">
-                        <form action="" method="post" class="form-message">
+                        <!-- <form action="" method="post" class="form-message">
                             <input type="text" name="message" class="chat-message" placeholder="Type your message...">
                             <button type="submit" class="btn-sent"><i class="fas fa-location-arrow text-center"></i></button>
-                        </form>
+                        </form> -->
+                        <chat-form
+                            v-on:messagesent="addMessage"
+                            :user="{{ Auth::user() }}"
+                        ></chat-form>
                     </div>
                 </div>
             @else
                 <div class="card">
-                    <h5 class="card-header">{{ isset($user) ? $user : 'Chatting' }}</h5>
+                    <h5 class="card-header">Chatting</h5>
                     <div class="card-body">
-                        <div class="clearfix">
-                            <div class="chat-text chat-left float-left">
-                                <p>Hi, This example chat by john doe</p>
-                            </div><br>
-                            <div class="chat-text chat-right float-right">
-                                <p>Hi, John whats up!</p>
-                            </div>
-                            <br>
-                            <div class="chat py-4">
-                                <form action="" method="post">
-                                    <input type="text" name="Message" placeholder="Enter you'r Message">
-                                </form>
-                            </div>
-                        </div>
                         <h5 class="card-title">Special title treatment</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <a href="#" class="btn btn-primary">New Chat</a>
