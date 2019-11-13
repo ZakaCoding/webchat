@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Register 
 Route::get('/auth/register', 'RegisterController@create')->name('register'); // Create views
@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/c/{user}', 'ChatController@index')->name('chatList');
 // Route::get('/', 'ChatController@index');
-Route::get('messages', 'ChatController@fetchMessages');
-Route::post('messages', 'ChatController@sendMessage');
+// Route::get('messages', 'ChatController@fetchMessages');
+Route::post('/messages/sent', 'ChatController@sendMessage')->name('sentMessage');
 
 

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+<?php
+    foreach($messages as $message) :
+        $message_name = $message->name;
+    endforeach;
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 hidden-xs hidden-sm bg-transparent py-4">
@@ -16,53 +22,49 @@
             </div>
             <div class="py-2"></div>
             <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{ url('home/c/John Doe') }}">John Doe</a>
-                    <span class="badge badge-primary badge-pill">14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Jane Doe
-                    <span class="badge badge-primary badge-pill">2</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Foo
-                    <span class="badge badge-primary badge-pill">1</span>
-                </li>
+                @foreach($messages as $message)
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{{ url('home/c/'.$message->name) }}">{{ $message->name }}</a>
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 py-4">
             @if(isset($user))
-                <div class="card">
+                <div class="card" id="app">
                     <h5 class="card-header">{{ $user }}</h5>
                     <div class="card-body">
                         <div class="chat">
-                            <!-- <div class="clearfix">
-                                <div class="chat-text chat-left float-left">
-                                    <p>Hi, This example chat by john doe</p>
-                                </div>
-                            </div>
+                            @foreach($messages as $message)
                             <div class="clearfix">
+                                @if($message->user_id != Auth::user()->user_id)
+                                <div class="chat-text chat-left float-left">
+                                    <p>
+                                        {{ $message->message }}
+                                    </p>
+                                </div>
+                                <div class="py-4"></div>
+                                @else
                                 <div class="chat-text chat-right float-right">
-                                    <p>Hi, John whats up!</p>
+                                    <p>
+                                        {{ $message->message }}
+                                    </p>
                                 </div>
+                                <div class="py-4"></div>
+                                @endif
                             </div>
-                            <div class="clearfix">
-                                <div class="chat-text chat-left float-left">
-                                    <p>Today i will visit your house</p>
-                                </div>
-                            </div> -->
-                            <chat-messages :messages="messages"></chat-messages>
+                            @endforeach
                         </div>
                     </div>
                     <div class="card-footer bg-white">
-                        <!-- <form action="" method="post" class="form-message">
+                        <form action="{{ route('sentMessage') }}" method="post" class="form-message">
+                            <input type="number" name="user_id" value="{{ Auth::user()->user_id }}" hidden>
                             <input type="text" name="message" class="chat-message" placeholder="Type your message...">
                             <button type="submit" class="btn-sent"><i class="fas fa-location-arrow text-center"></i></button>
-                        </form> -->
-                        <chat-form
-                            v-on:messagesent="addMessage"
-                            :user="{{ Auth::user() }}"
-                        ></chat-form>
+
+                            {{ csrf_field() }}
+                        </form>
                     </div>
                 </div>
             @else

@@ -55,7 +55,7 @@
         
         {{ csrf_field() }}
     </form>
-    <p class="text-center"><a href="{{ route('login') }}">Create an Account</a></p>
+    <p class="text-center"><a href="{{ route('login') }}">login</a></p>
 
     <!-- Return response create account -->
     @if(\Session::has('success'))

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MessageSent;
 use App\Models\Message;
+use DB;
 
 class ChatController extends Controller
 {
@@ -15,7 +16,12 @@ class ChatController extends Controller
     }
     public function index($user)
     {
-        return view('home',['user' => $user]);
+        $messages =  DB::table('messages')
+                        ->leftJoin('users','messages.user_id','=','users.user_id')
+                        ->get();
+        
+                        // dd($messages);
+        return view('home',['user' => $user, 'messages' => $messages]);
     }
 
     /**
@@ -37,11 +43,18 @@ class ChatController extends Controller
     public function sendMessage(Request $request)
     {
         $user = Auth::user();
+        // $message = $user->messages()->create([
+        //     'message' => $request->message
+        // ]);
 
-        $message = $user->messages()->create([
-            'message' => $request->input('message')
-        ]);
+        $message = new Message();
+        $message->user_id = $request->user_id;
+        $message->message = $request->message;
+        $message->created_at = now();
+        $message->updated_at = now();
+        $message->save();
 
-        return ['status' => 'Message Sent!'];
+        return \redirect()->route('chatList');
+        // return ['status' => 'Message Sent!'];
     }
 }

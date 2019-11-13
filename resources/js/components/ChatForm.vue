@@ -1,5 +1,5 @@
 <template>
-    <div class="form-message">
+    <div class="form-message" id="app">
         <input id="btn-input" type="text" name="message" class="chat-message" placeholder="Type your message..." v-model="newMessage" @keyup.enter="sendMessage">
         <button type="submit" class="btn-sent" id="btn-chat" @click="sendMessage">
             <i class="fas fa-location-arrow text-center"></i>

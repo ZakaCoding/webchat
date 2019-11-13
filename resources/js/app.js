@@ -33,7 +33,7 @@ Vue.component('chat-form', require('./components/ChatForm.vue'));
 //     el: '#app',
 // });
 
-const app = new Vue({
+new Vue({
     el: '#app',
 
     data: {

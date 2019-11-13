@@ -1888,6 +1888,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['messages']
 });
@@ -47036,7 +47038,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-message" }, [
+  return _c("div", { staticClass: "form-message", attrs: { id: "app" } }, [
     _c("input", {
       directives: [
         {
@@ -47108,18 +47110,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.messages, function(message) {
-      return _c("div", { staticClass: "clearfix" }, [
-        _c("div", { staticClass: "chat-text chat-left float-left" }, [
-          _c("p", [
-            _vm._v(
-              "\n                " + _vm._s(message.message) + "\n            "
-            )
+    { attrs: { id: "app" } },
+    [
+      _c(
+        "chat-messages",
+        { attrs: { messages: _vm.messages } },
+        _vm._l(_vm.messages, function(message) {
+          return _c("div", { staticClass: "clearfix" }, [
+            _c("div", { staticClass: "chat-text chat-left float-left" }, [
+              _c("p", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(message.message) +
+                    "\n                "
+                )
+              ])
+            ])
           ])
-        ])
-      ])
-    }),
-    0
+        }),
+        0
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -59302,7 +59314,7 @@ Vue.component('chat-form', __webpack_require__(/*! ./components/ChatForm.vue */ 
 //     el: '#app',
 // });
 
-var app = new Vue({
+new Vue({
   el: '#app',
   data: {
     messages: []
